@@ -1,10 +1,16 @@
+import { useLoaderData } from "react-router-dom";
 import Header from "../Shared/Header/Header";
 import LeftSideNsv from "../Shared/Lreft Side Nav/LeftSideNsv";
 import NavBar from "../Shared/NavBar/NavBar";
 import RightSideNav from "../Shared/Right Side Nav/RightSideNav";
 import BreakingNews from "./BreakingNews";
+import NewsCardsHome from "../Shared/News Cards For The Home Page/NewsCardsHome";
 
 const Home = () => {
+
+    const newses = useLoaderData();
+    console.log(newses);
+
     return (
         <div>
             <div className="flex flex-col gap-[34px] mb-[80px] mt-[50px]">
@@ -17,7 +23,12 @@ const Home = () => {
                     <LeftSideNsv></LeftSideNsv>
                 </div>
                 <div className="lg:col-span-2">
-                    <h2 className="text-3xl">Here is the news panel</h2>
+                    {
+                        newses.map(news => <NewsCardsHome
+                            key={news._id}
+                            newses={news}
+                        ></NewsCardsHome>)
+                    }
                 </div>
                 <div>
                     <RightSideNav></RightSideNav>
