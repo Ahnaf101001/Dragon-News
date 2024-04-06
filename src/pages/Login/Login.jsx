@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../Shared/NavBar/NavBar";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import Header from "../Shared/Header/Header";
 
 const Login = () => {
 
     const { logIn } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate()
+    console.log("location in the login page = ", location);
 
     const handleLogin = e => {
         e.preventDefault();
@@ -22,6 +26,7 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 console.log(result.use);
+                navigate(location?.state ? location.state : '/');
             })
             .catch(error => {
                 console.error(error);
@@ -30,6 +35,7 @@ const Login = () => {
 
     return (
         <div>
+            <Header></Header>
             <NavBar></NavBar>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content">

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import NavBar from "../Shared/NavBar/NavBar";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import Header from "../Shared/Header/Header";
 
 
 const Register = () => {
@@ -35,6 +36,7 @@ const Register = () => {
 
     return (
         <div>
+            <Header></Header>
             <NavBar></NavBar>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content">
